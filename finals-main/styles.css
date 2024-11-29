@@ -1,0 +1,200 @@
+/* General body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('bg.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent body scrolling */
+}
+
+/* Overlay for translucency */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* White overlay with 50% opacity */
+    z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+/* Wrapper for the form */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px; /* Ensure max width */
+}
+
+/* Form container */
+.form-container {
+    background-color: #ffffff;
+    border: 1px solid #006400;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: 100%;
+    max-height: 100vh; /* Maximum height for the form */
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Logo styling */
+.logo {
+    width: 100px; /* Smaller logo size */
+    margin-bottom: 15px;
+}
+
+/* Form title */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #006400; /* Green color from logo */
+    margin-bottom: 15px;
+    font-size: 24px; /* Slightly larger font size for prominence */
+}
+
+/* Input container styling */
+.input-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #006400;
+}
+
+.input-container input,
+.input-container select {
+    width: 100%;
+    padding: 10px 10px 10px 30px; /* Add padding to accommodate icon */
+    border: 1px solid #006400;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+/* Submit button styling */
+button {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #004b00; /* Dark green color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+button:hover {
+    background-color: #065206;
+}
+
+/* Link styling */
+a {
+    font-family: 'Roboto', sans-serif;
+    color: #004b00; 
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Paragraph for the signup link */
+p {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #333;
+}
+
+/* Custom scrollbar for form */
+.form-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+    background-color: #006400;
+    border-radius: 10px;
+}
+
+.form-container::-webkit-scrollbar-thumb:hover {
+    background-color: #004b00;
+}
+
+/* School name styling */
+.school-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #333; /* Adjust color as needed */
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Style for the Caps Lock warning message */
+.caps-lock-warning {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    padding: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 5px;
+    z-index: 10;
+}
+
+/* Input container styling */
+.input-container {
+    position: relative; /* Make the container relative to position the warning message */
+    margin-bottom: 15px;
+}
+
+/* Adjusted input container for CAPTCHA */
+.captcha-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between the icon and the input */
+}
+
+.captcha-container img {
+    margin-left: 10px; /* Add space between the icon and CAPTCHA image */
+    border: 1px solid #006400; /* Optional: border to match the green theme */
+    padding: 2px; /* Optional: padding inside the border */
+    border-radius: 4px; /* Optional: rounded edges */
+}
+
+.captcha-container i {
+    font-size: 24px; /* Adjust the icon size */
+    color: #006400; /* Match the green theme */
+    margin-right: 10px; /* Space between the icon and CAPTCHA input */
+}
+
+.captcha-container input {
+    width: calc(100% - 180px); /* Adjust input width to accommodate the CAPTCHA image */
+    padding-left: 10px; /* Padding for the input field */
+    margin-left: 10px; /* Space between the input and CAPTCHA image */
+}

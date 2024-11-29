@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - PLMUN Library</title>
+    <link rel="icon" type="image/x-icon" href="plmun.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="alerts.js" defer></script>
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <div class="form-container">
+            <!-- School Logo at the Top -->
+            <img src="plmun.png" alt="PLMUN Logo" class="logo">
+            <p class="school-name">Pamantasan ng Lungsod ng Muntinlupa - Library Management System</p>
+
+            <h2>Sign Up</h2>
+
+            <form id="signup-form" class="form" action="signup.php" method="post" onsubmit="return validateForm()">
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="institutional_email" id="institutional_email" placeholder="example@plmun.edu.ph" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" name="student_number" id="student_number" placeholder="Student Number" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-university"></i>
+                    <select name="college" id="college" required onchange="updateCourses()">
+                        <option value="" disabled selected>Select College</option>
+                        <option value="CAS">CAS</option>
+                        <option value="CBA">CBA</option>
+                        <option value="CCJ">CCJ</option>
+                        <option value="CITCS">CITCS</option>
+                        <option value="COM">COM</option>
+                        <option value="CTE">CTE</option>
+                        <option value="IPPG">IPPG</option>
+                        <option value="GS">GS</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-book"></i>
+                    <select name="course" id="course" required>
+                        <option value="" disabled selected>Select Course</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-graduation-cap"></i>
+                    <select name="year_level" id="year_level" required>
+                        <option value="" disabled selected>Select Year Level</option>
+                        <option value="1st year">1st year</option>
+                        <option value="2nd year">2nd year</option>
+                        <option value="3rd year">3rd year</option>
+                        <option value="4th year">4th year</option>
+                        <option value="5th year">5th year</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <div id="caps-lock-warning-password" class="caps-lock-warning">
+                        Caps Lock is on!
+                    </div>
+                </div>
+                
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+                <button type="submit">Sign Up</button>
+
+                <p>Already have an account? <a href="login.php">Login here</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check for alert parameters in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const alertType = urlParams.get('alert');
+            const alertMessage = urlParams.get('message');
+            const redirectUrl = urlParams.get('redirect');
+        
+            // Map alert types to SweetAlert icon types
+            let iconType;
+            switch (alertType) {
+                case 'success':
+                    iconType = 'success';
+                    break;
+                case 'error':
+                    iconType = 'error';
+                    break;
+                case 'warning':
+                    iconType = 'warning';
+                    break;
+                default:
+                    iconType = 'info'; // Default icon
+                    break;
+            }
+        
+            // If there's an alert type and message, show the alert
+            if (alertType && alertMessage) {
+                Swal.fire({
+                    title: alertType === 'success' ? 'Success' : 'Error',
+                    text: alertMessage,
+                    icon: iconType,
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl;
+                    }
+                });
+            }
+        });
+        </script>
+        
+    <script>
+       
+        // Caps lock detection
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirm_password');
+            const capsLockWarningPassword = document.getElementById('caps-lock-warning-password');
+
+            function checkCapsLock(event) {
+                const isCapsLock = event.getModifierState && event.getModifierState('CapsLock');
+                if (isCapsLock) {
+                    capsLockWarningPassword.style.display = 'block';
+                } else {
+                    capsLockWarningPassword.style.display = 'none';
+                }
+            }
+
+            passwordField.addEventListener('keydown', checkCapsLock);
+            passwordField.addEventListener('keyup', checkCapsLock);
+            confirmPasswordField.addEventListener('keydown', checkCapsLock);
+            confirmPasswordField.addEventListener('keyup', checkCapsLock);
+
+            capsLockWarningPassword.style.display = 'none';
+        });
+
+        // Update courses based on selected college
+        function updateCourses() {
+            const college = document.getElementById('college').value;
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '<option value="" disabled selected>Select Course</option>';
+
+            const courses = {
+                CAS: ['Bachelor of Arts in Mass Communication', 'Bachelor of Science in Psychology'],
+                CBA: ['BSBA - Major in Human Resource Development Management', 'BSBA - Major in Marketing Management', 'BSBA - Major in Operations Management'],
+                CCJ: ['Bachelor of Science in Criminology'],
+                CITCS: ['Bachelor of Science in Computer Studies', 'Bachelor of Science in Information Technology', 'Associate in Computer Technology'],
+                COM: ['Doctor of Medicine'],
+                CTE: ['Bachelor of Elementary Education', 'Bachelor of Science in Secondary Education', 'Teacher Education Certificate/Diploma'],
+                IPPG: ['Bachelor of Arts in Political Science'],
+                GS: ['Master in Business Administration', 'Master in Information Technology', 'Master of Arts in Education, Major in Educational Management', 'Master of Security and Correctional Administration', 'Master of Arts in Education, Major in Guidance and Counseling', 'Master of Science in Criminology']
+            };
+
+            if (courses[college]) {
+                courses[college].forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

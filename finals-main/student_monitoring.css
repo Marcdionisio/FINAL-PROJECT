@@ -1,0 +1,404 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png') no-repeat center center fixed; 
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004b00;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links li a i {
+    margin-right: 8px;
+}
+
+.nav-links li a:hover {
+    background-color: #065206;
+    color: #f1f1f1;
+}
+
+.nav-links li.active a {
+    background-color: #137213;
+    color: #f1f1f1;
+}
+
+/* Dropdown styling */
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #004b00;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #065206;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Container for the layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%; /* Full width since sidebar is removed */
+    margin-top: 10px; /* Adjust for navbar height */
+    padding: 20px;
+    box-sizing: border-box;
+    height: calc(100vh - 60px); /* Adjust height for navbar */
+    overflow-y: auto;
+}
+
+/* Scanner container */
+.scanner-container {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.scanner-container h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #006400;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.scanner-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#qr-reader {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    border: 10px solid #006400;
+    border-radius: 12px;
+    margin-right: 20px;
+}
+
+.book-info {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.book-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.book-info input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #006400;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+/* Submit button styling */
+button {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #004b00; /* Dark green color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 23px;
+}
+
+/* Hover effect for the button */
+button:hover {
+    background-color: #065206;
+}
+
+/* Transaction list styling */
+.transaction-list {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+.transaction-list h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #006400;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.table-controls input[type="text"],
+.table-controls input[type="date"],
+.table-controls select {
+    padding: 10px;
+    border: 1px solid #006400;
+    border-radius: 6px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.table-controls button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #004b00;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.table-controls button:hover {
+    background-color: #065206;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+table,
+th,
+td {
+    border: 1px solid #006400;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #006400;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+tr:nth-child(even) td {
+    background-color: #e9e9e9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin-top: 20px; /* Adjust margin for mobile */
+        width: 100%;
+    }
+
+    .navbar {
+        height: 50px; /* Adjust navbar height for mobile */
+    }
+
+    .scanner-content {
+        flex-direction: column;
+    }
+
+    #qr-reader,
+    .book-info {
+        width: 100%;
+    }
+
+    .table-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .table-controls input[type="text"],
+    .table-controls input[type="date"],
+    .table-controls select,
+    .table-controls button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-numbers {
+    display: flex;
+    margin: 0 10px;
+}
+
+.page-number {
+    border: 1px solid #199b19;
+    color: #199b19;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.page-number.active {
+    background-color: #199b19;
+    color: white;
+}
+/* Modern scrollbar */
+.container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+    border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #006400; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded edges for the scrollbar thumb */
+    border: 2px solid #f1f1f1; /* Adds some space around the thumb */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: #004b00; /* Darker green on hover */
+}
+
+/* For Firefox */
+.container {
+    scrollbar-width: thin; /* Makes the scrollbar thinner */
+    scrollbar-color: #006400 #f1f1f1; /* Thumb and track color */
+}
+.student-info {
+    width: 45%;
+    margin-right: 100px;
+    margin-bottom:30px;
+}
+
+.student-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.student-info input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #006400;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
